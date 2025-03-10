@@ -1,5 +1,4 @@
-@import 'tailwindcss';
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source "../**/*.blade.php";
@@ -9,4 +8,65 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: inherit;
+}
+
+:root {
+    --color--primary: #101820;
+    --color--secondary: #FEE715;
+    --color--tertiary: #fff;
+    --font--size--paragraphs: 2rem;
+    --font--size--headers: 4rem;
+    --font--size--links: 2rem;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color--primary);
+    font-size: var(--font--size--links);
+    width: 100%;
+}
+
+.header-div {
+    margin: 2.5rem;
+}
+
+.header-div__link {
+    color: var(--color--secondary);
+    font-size: var(--font--size--links);
+    text-decoration: none;
+    margin: 2.5rem;
+    transition: all .2s;
+}
+
+.header-div__link:hover {
+    color: var(--color--tertiary);
+}
+
+.header-div__logo {
+    background-image: url("./logo.png");
+    background-size: contain;
+    width: 10rem;
+    height: 10rem;
 }
