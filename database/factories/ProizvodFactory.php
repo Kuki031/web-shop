@@ -20,7 +20,7 @@ class ProizvodFactory extends Factory
             "naziv" => fake()->name(),
             "cijena" => fake()->randomFloat(2, 20, 600),
             "opis" => fake()->text(150),
-            "slika" => fake()->name(),
+            "slika" => fake()->imageUrl(),
             "broj_kupnji" => fake()->numberBetween(0, 50)
         ];
     }

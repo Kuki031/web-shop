@@ -9,8 +9,9 @@ Route::get('/', function () {
 
 
 Route::prefix("web-shop")->group(function() {
-    Route::get("/naslovnica", [ProizvodController::class, "najprodavanijiProizvodi"]);
-    Route::get("/katalog-proizvoda", [ProizvodController::class, "index"]);
+    Route::get("/naslovnica", [ProizvodController::class, "getMostSoldProducts"])->name("naslovnica");
+    Route::get("/katalog-proizvoda", [ProizvodController::class, "index"])->name("katalog");
+    Route::get("/katalog-proizvoda/proizvod/{id}", [ProizvodController::class, "show"])->name("proizvod");
 
 });
 

@@ -12,17 +12,16 @@ class ProizvodController extends Controller
      * Display a listing of the resource.
      */
 
-    public function najprodavanijiProizvodi()
+    public function getMostSoldProducts()
     {
         $proizvodi = Proizvod::limit(10)->orderByDesc("broj_kupnji")->get();
-        return view("naslovnica", ["proizvodi" => $proizvodi]);
+        return view("naslovnica", ["proizvodi" => $proizvodi, "title" => "Naslovna stranica"]);
     }
 
     public function index()
     {
-        //katalog
         $proizvodi = Proizvod::all();
-        return view("katalog", ["proizvodi" => $proizvodi]);
+        return view("katalog", ["proizvodi" => $proizvodi, "title" => "Katalog proizvoda"]);
     }
 
     /**
@@ -44,9 +43,15 @@ class ProizvodController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Proizvod $proizvod)
+    public function show(Proizvod $proizvod, int $id)
     {
-        //
+        $proizvod = Proizvod::findOrFail($id);
+
+        if (!$proizvod) {
+            return redirect("naslovnica", 404);
+        }
+
+        return view("proizvod", ["proizvod" => $proizvod, "title" => $proizvod->naziv]);
     }
 
     /**
