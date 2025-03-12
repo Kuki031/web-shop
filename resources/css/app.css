@@ -49,6 +49,8 @@ body {
     --padding--mobile: 0.6rem;
     --product--card--width: 35rem;
     --product--card--height: 35rem;
+    --color--success: rgb(14, 126, 14);
+    --color--fail: rgb(139, 12, 12);
 }
 
 .header {
@@ -127,6 +129,7 @@ body {
 
 
 .singe-product-wrap {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -176,7 +179,7 @@ body {
     max-width: 50%;
 }
 
-.single-product-info__order {
+.single-product-info__order, .form-wrap-form__input--button {
     background-color: var(--color--secondary);
     color: var(--color--primary);
     padding: var(--padding);
@@ -185,7 +188,7 @@ body {
     transition: all .2s;
 }
 
-.single-product-info__order:hover {
+.single-product-info__order:hover, .form-wrap-form__input--button:hover {
     background-color: var(--color--primary);
     color: var(--color--secondary);
 }
@@ -267,6 +270,50 @@ body {
 }
 
 
+.form-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--gap);
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form-wrap-form {
+    display: none;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--gap);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn ease-in-out 1s;
+}
+
+.form-wrap-form__input {
+    align-self: flex-start;
+    padding: var(--padding);
+}
+
+.flash__success {
+    position: absolute;
+    top: 0;
+    background-color: var(--color--success);
+    color: var(--color--tertiary);
+    padding: var(--padding);
+    margin: var(--el--margins);
+    z-index: 1;
+}
+
+.flash__fail {
+    position: absolute;
+    top: 0;
+    background-color: var(--color--fail);
+    color: var(--color--tertiary);
+    padding: var(--padding);
+    margin: var(--el--margins);
+    z-index: 1;
+}
 
 
 @media (max-width: 1024px) {
@@ -327,6 +374,10 @@ body {
     }
     .product-card-info {
         font-size: var(--font--size--mobile);
+    }
+    .form-wrap-form__input {
+        font-size: var(--font--size--mobile);
+        padding: var(--padding--mobile);
     }
 }
 

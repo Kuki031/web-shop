@@ -9,7 +9,7 @@ class Proizvod extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["naziv", "cijena", "opis", "slika"];
+    protected $fillable = ["naziv", "cijena", "opis", "slika", "broj_kupnji"];
 
     public function narudzba() {
         return $this->belongsTo(Narudzba::class);

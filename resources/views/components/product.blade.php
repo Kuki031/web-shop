@@ -1,6 +1,6 @@
 @props(['proizvod'])
 
-<div class="product-card" style="background-image: url({{ asset('storage/ph.jpg') }})">
+<div id="{{ $proizvod->id }}" class="product-card" style="background-image: url({{ asset('storage/ph.jpg') }})">
     <div class="product-card-info">
         <div>
             <p class="product-card-info__name">{{ $proizvod->naziv }}</p>

@@ -2,7 +2,9 @@
 <title>{{ $title }}</title>
 
 <div class="singe-product-wrap">
+    <x-flash />
     <div class="single-product-container">
+
         <div class="single-product-info">
 
             <div>
@@ -21,5 +23,6 @@
             <h2>Opis</h2>
             <p class="single-product-info__about">{{ $proizvod->opis }}</p>
         </div>
+        <x-form :proizvod="$proizvod" :narucitelji="$narucitelji" />
     </div>
 </div>

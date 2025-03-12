@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Proizvod;
 use App\Http\Requests\StoreProizvodRequest;
 use App\Http\Requests\UpdateProizvodRequest;
+use App\Models\Narucitelj;
 
 class ProizvodController extends Controller
 {
@@ -20,7 +21,7 @@ class ProizvodController extends Controller
 
     public function index()
     {
-        $proizvodi = Proizvod::all();
+        $proizvodi = Proizvod::orderBy("naziv")->get();
         return view("katalog", ["proizvodi" => $proizvodi, "title" => "Katalog proizvoda"]);
     }
 
@@ -48,10 +49,11 @@ class ProizvodController extends Controller
         $proizvod = Proizvod::findOrFail($id);
 
         if (!$proizvod) {
-            return redirect("naslovnica", 404);
+            abort(404);
         }
 
-        return view("proizvod", ["proizvod" => $proizvod, "title" => $proizvod->naziv]);
+        $narucitelji = Narucitelj::all();
+        return view("proizvod", ["proizvod" => $proizvod, "narucitelji" => $narucitelji , "title" => $proizvod->naziv]);
     }
 
     /**
