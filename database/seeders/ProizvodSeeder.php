@@ -12,6 +12,19 @@ class ProizvodSeeder extends Seeder
      */
     public function run(): void
     {
-        Proizvod::factory(20)->create();
+        $proizvodiImena = ["Laptop", "Mobitel", "Tipkovnica", "Miš", "Monitor", "CPU", "GPU", "Napajanje", "Podloga za miš", "Harddisk", "USB-c", "Pametni sat"];
+        $proizvodi = [];
+
+        for($i = 0 ; $i < sizeof($proizvodiImena) ; $i++) {
+            array_push($proizvodi, [
+                "naziv" => $proizvodiImena[$i],
+                "cijena" => fake()->randomFloat(2, 20, 600),
+                "opis" => fake()->text(150),
+                "slika" => "images/". $i + 1 . ".jpg",
+                "broj_kupnji" => fake()->numberBetween(0, 50)
+            ]);
+        }
+
+        Proizvod::factory()->createMany($proizvodi);
     }
 }

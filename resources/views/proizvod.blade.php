@@ -8,7 +8,7 @@
         <div class="single-product-info">
 
             <div>
-                <img class="single-product-info__img" src="{{ asset('storage/ph.jpg') }}" alt="nema slike">
+                <img class="single-product-info__img" src="{{ file_exists(public_path($proizvod->slika)) ? asset($proizvod->slika) : asset("images/ph.png") }}">
             </div>
             <div>
                 <h2 class="single-product-info__name">{{ $proizvod->naziv }}</h2>

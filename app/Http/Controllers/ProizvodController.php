@@ -6,6 +6,7 @@ use App\Models\Proizvod;
 use App\Http\Requests\StoreProizvodRequest;
 use App\Http\Requests\UpdateProizvodRequest;
 use App\Models\Narucitelj;
+use Exception;
 
 class ProizvodController extends Controller
 {
@@ -16,13 +17,13 @@ class ProizvodController extends Controller
     public function getMostSoldProducts()
     {
         $proizvodi = Proizvod::limit(10)->orderByDesc("broj_kupnji")->get();
-        return view("naslovnica", ["proizvodi" => $proizvodi, "title" => "Naslovna stranica"]);
+        return view("naslovnica", ["proizvodi" => $proizvodi]);
     }
 
     public function index()
     {
-        $proizvodi = Proizvod::orderBy("naziv")->get();
-        return view("katalog", ["proizvodi" => $proizvodi, "title" => "Katalog proizvoda"]);
+        $proizvodi = Proizvod::all();
+        return view("katalog", ["proizvodi" => $proizvodi]);
     }
 
     /**
@@ -46,14 +47,25 @@ class ProizvodController extends Controller
      */
     public function show(Proizvod $proizvod, int $id)
     {
-        $proizvod = Proizvod::findOrFail($id);
-
-        if (!$proizvod) {
-            abort(404);
-        }
-
         $narucitelji = Narucitelj::all();
-        return view("proizvod", ["proizvod" => $proizvod, "narucitelji" => $narucitelji , "title" => $proizvod->naziv]);
+
+        try {
+
+            $proizvod = Proizvod::find($id);
+
+            if (!$proizvod) {
+                throw new Exception("Proizvod sa ID-em {$id} ne postoji.");
+            }
+
+            return view("proizvod", ["proizvod" => $proizvod, "narucitelji" => $narucitelji , "title" => $proizvod->naziv]);
+
+        } catch (Exception $e) {
+
+            session()->flash("fail", $e->getMessage());
+            $proizvod = Proizvod::first();
+            return view("proizvod", ["proizvod" => $proizvod, "narucitelji" => $narucitelji , "title" => $proizvod->naziv]);
+
+        }
     }
 
     /**

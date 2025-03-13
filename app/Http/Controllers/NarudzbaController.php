@@ -33,7 +33,7 @@ class NarudzbaController extends Controller
         try {
 
             $validatedData = $request->validate([
-                "narucitelj_id" => "required|exists:naruciteljs,id",
+                "narucitelj_id" => "required|integer|exists:naruciteljs,id",
                 "proizvod_id" => "required|integer|exists:proizvods,id",
                 "kolicina" => "required|integer|min:1",
             ]);
@@ -50,7 +50,6 @@ class NarudzbaController extends Controller
         } catch (ValidationException $e) {
             return back()->with("fail", "Greška pri kreiranju narudžbe.")->withErrors([]);
         }
-
     }
 
     /**

@@ -14,14 +14,10 @@ class ProizvodFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            "naziv" => fake()->name(),
-            "cijena" => fake()->randomFloat(2, 20, 600),
-            "opis" => fake()->text(150),
-            "slika" => fake()->imageUrl(),
-            "broj_kupnji" => fake()->numberBetween(0, 50)
+            //
         ];
     }
 }
