@@ -1,7 +1,7 @@
 <x-header />
 <title>{{ $title }}</title>
 
-<div class="singe-product-wrap">
+<section class="singe-product-wrap">
     <x-flash />
     <div class="single-product-container">
 
@@ -25,4 +25,4 @@
         </div>
         <x-form :proizvod="$proizvod" :narucitelji="$narucitelji" />
     </div>
-</div>
+</section>

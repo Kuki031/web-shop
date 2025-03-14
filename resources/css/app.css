@@ -53,6 +53,8 @@ body {
     --product--card--height: 35rem;
     --color--success: rgb(14, 126, 14);
     --color--fail: rgb(139, 12, 12);
+    --transitions: all .2s;
+    --fadein--duration: .5s;
 }
 
 .header {
@@ -75,7 +77,7 @@ body {
     font-size: var(--font--size--links);
     text-decoration: none;
     margin: var(--el--margins);
-    transition: all .2s;
+    transition: var(--transitions);
 }
 
 .header-div__link:hover {
@@ -100,12 +102,33 @@ body {
 .most-sold-products {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--gap);
     align-items: center;
     margin: var(--el--margins) auto;
+    justify-content: space-around;
+    animation: fadeIn ease-in-out var(--fadein--duration);
+}
+
+
+.most-sold-products .most-sold-products-div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--gap);
+    align-items: center;
+    margin: var(--el--margins);
     justify-content: center;
-    animation: fadeIn ease-in-out 1s;
+    animation: fadeIn ease-in-out var(--fadein--duration);
+}
+
+.most-sold-products-div:nth-child(1) {
+    align-self: flex-start;
+}
+
+
+.most-sold-products-div__heading {
+    font-size: var(--font--size--headers);
 }
 
 .most-sold-products__table {
@@ -113,18 +136,24 @@ body {
     margin: var(--el--margins);
 }
 
+
 .most-sold-products__table th,
 .most-sold-products__table td {
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid var(--color--tertiary);
     padding: var(--padding);
     text-align: left;
-    transition: all .2s;
+    transition: var(--transitions);
+}
+
+.most-sold-products__table td {
+    text-align: left;
 }
 
 .most-sold-products__table td a {
     color: var(--color--primary);
     text-decoration: none;
-    transition: all .2s;
+    transition: var(--transitions);
+    border-bottom: 2px solid var(--color--primary);
 }
 
 .most-sold-products__table td a:hover {
@@ -170,7 +199,7 @@ body {
     padding: var(--padding);
     margin: var(--el--margins);
     border-radius: var(--border--radius);
-    animation: fadeIn ease-in-out .5s;
+    animation: fadeIn ease-in-out var(--fadein--duration);
 }
 
 .single-product-info__img {
@@ -189,7 +218,7 @@ body {
     padding: var(--padding);
     border:none;
     cursor: pointer;
-    transition: all .2s;
+    transition: var(--transitions);
 }
 
 .single-product-info__order:hover, .form-wrap-form__input--button:hover {
@@ -212,7 +241,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap: var(--small--gap);
-    animation: fadeIn ease-in-out .5s;
+    animation: fadeIn ease-in-out var(--fadein--duration);
     margin: var(--el--margins--small);
 }
 
@@ -226,7 +255,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: all .2s;
+    transition: var(--transitions);
 }
 
 
@@ -263,7 +292,7 @@ body {
     padding: var(--padding);
     border: none;
     cursor: pointer;
-    transition: all .2s;
+    transition: var(--transitions);
     text-decoration: none;
     margin: var(--el--margins);
 }
@@ -346,7 +375,7 @@ body {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .header-div__link {
         font-size: var(--font--size--mobile);
     }

@@ -1,6 +1,6 @@
 @props(["proizvod", "narucitelji"])
 
-<div class="form-wrap">
+<section class="form-wrap">
 
     <form class="form-wrap-form" action="{{ url('web-shop/kreiraj-narudzbu') }}" method="post">
 
@@ -18,4 +18,4 @@
         <input type="submit" class="form-wrap-form__input form-wrap-form__input--button" value="Naruči">
     </form>
 
-</div>
+</section>

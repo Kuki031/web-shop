@@ -2,26 +2,32 @@
     <title>Naslovnica</title>
 </head>
 <x-header />
-<div class="most-sold-products">
-
-    <h1 class="most-sold-products__heading">Top 10 najprodavanijih proizvoda</h1>
-    <table class="most-sold-products__table">
-        <thead>
-            <tr class="thead-row">
-                <th>Naziv</th>
-                <th>Cijena</th>
-                <th>Broj kupnji</th>
-            </tr>
-        </thead>
-        <tbody>
-                @foreach ($proizvodi as $proizvod)
-                <tr>
-                    <td><a href={{ route("proizvod", ["id" => $proizvod->id]) }}>{{ $proizvod->naziv }}</a></td>
-                    <td>{{ $proizvod->cijena }} €</td>
-                    <td>{{ $proizvod->broj_kupnji }}</td>
+<section class="most-sold-products">
+    <div class="most-sold-products-div">
+        <h1 class="most-sold-products-div__heading">Dobrodošli u Tech Shop!</h1>
+    </div>
+    <div class="most-sold-products-div">
+        <table class="most-sold-products__table">
+            <thead>
+                <tr class="thead-row">
+                    <th colspan="3">Najprodavaniji proizvodi</th>
                 </tr>
-                @endforeach
+                <tr class="thead-row">
+                    <th>Naziv</th>
+                    <th>Cijena</th>
+                    <th>Broj kupnji</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach ($proizvodi as $proizvod)
+                    <tr>
+                        <td><a href={{ route("proizvod", ["id" => $proizvod->id]) }}>{{ $proizvod->naziv }}</a></td>
+                        <td>{{ $proizvod->cijena }} €</td>
+                        <td>{{ $proizvod->broj_kupnji }}</td>
+                    </tr>
+                    @endforeach
 
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+</section>

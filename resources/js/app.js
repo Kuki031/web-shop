@@ -32,20 +32,24 @@ if (orderBtn) {
 
 
 
-const products = Array.from(document.querySelectorAll(".product-card"));
-if (products) {
-
-    let listLength = parseInt(products.length);
-    let productCount = 0;
+const populateGrid = function(items, duration) {
+    let listLength = parseInt(items.length);
+    let itemCount = 0;
 
     const start = setInterval(() => {
+        items[itemCount].style.display = "flex";
+        itemCount++;
 
-        products[productCount].style.display = "flex";
-        productCount++;
-
-        if (productCount === listLength) {
+        if (itemCount === listLength) {
             clearInterval(start);
         }
 
-    }, 50);
+    }, duration);
+}
+
+
+
+const products = Array.from(document.querySelectorAll(".product-card"));
+if (products && products.length > 0) {
+    populateGrid(products, 50);
 }

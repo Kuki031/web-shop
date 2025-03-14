@@ -1,6 +1,6 @@
 @props(['proizvod'])
 
-<div id="{{ $proizvod->id }}" class="product-card"
+<section id="{{ $proizvod->id }}" class="product-card"
     style="background-image: url('{{ file_exists(public_path($proizvod->slika)) ? asset($proizvod->slika) : asset("images/ph.png") }}');"
     >
 
@@ -12,4 +12,4 @@
         </div>
         <a class="product-card-info__add" href={{ route("proizvod", ["id" => $proizvod->id]) }}>Kupi proizvod</a>
     </div>
-</div>
+</section>
